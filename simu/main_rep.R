@@ -7,7 +7,7 @@ library(ggplot2)
 
 methods = c('SS','SS-MCF','AS','AS-MCF','AT','AT-MCF')
 n.method = length(methods)
-n.simu = 300
+n.simu = 1000
 FDP = matrix(rep(0,n.method*n.simu), nrow = n.method)
 POWER = matrix(rep(0,n.method*n.simu), nrow = n.method)
 row.names(FDP) = methods
