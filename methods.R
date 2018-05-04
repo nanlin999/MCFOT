@@ -124,10 +124,13 @@ BH.MCF <- function(p.org, p.next, alpha){
   }
   # print(s/(sum(randp.sample<=s)/(n.test*n.rep)))
   # reject based on MCF
-  R = round(sum(randp.sample<=s)/n.rep) # number of rejections
+  # R = round(sum(randp.sample<=s)/n.rep) # number of rejections
   # calculating MCF r's
   r <- mcf(p.org, p.next, s)
-  rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  # rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  cdf = sum(randp.sample<=s) / (n.rep*k)
+  rej <- which(r >= quantile(r, probs = 1-cdf))
+
   return(rej)
 }
 ##############################################################################
@@ -150,10 +153,13 @@ SBH.MCF <- function(p.org, p.next, alpha, lambda){
   }
   # print(s/(1-lambda) * (1+sum(randp.sample>lambda)/n.rep) / (sum(randp.sample<=s)/n.rep))
   # reject based on MCF
-  R = round(sum(randp.sample<=s)/n.rep) # number of rejections
+  # R = round(sum(randp.sample<=s)/n.rep) # number of rejections
   # calculating MCF r's
   r <- mcf(p.org, p.next, s)
-  rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  # rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  cdf = sum(randp.sample<=s) / (n.rep*k)
+  rej <- which(r >= quantile(r, probs = 1-cdf))
+
   return(rej)
 }
 ##############################################################################
@@ -190,9 +196,12 @@ SS.MCF <- function(p.org, p.next, alpha, s){
   }
   # determine rejetions
   randp.sample = as.vector(randp[1:k,])
-  R = round(sum(randp.sample<=s)/n.rep)
+  # R = round(sum(randp.sample<=s)/n.rep)
   r = mcf(p.org[1:k], p.next[1:k], s)
-  rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  # rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  cdf = sum(randp.sample<=s) / (n.rep*k)
+  rej <- which(r >= quantile(r, probs = 1-cdf))
+
   return(rej) 
 }
 ##############################################################################
@@ -228,9 +237,11 @@ AS.MCF <- function(p.org, p.next, alpha, s, lambda){
   }
   # determine rejetions
   randp.sample = as.vector(randp[1:k,])
-  R = round(sum(randp.sample<=s)/n.rep)
+  # R = round(sum(randp.sample<=s)/n.rep)
   r = mcf(p.org[1:k], p.next[1:k], s)
-  rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
+  cdf = sum(randp.sample<=s) / (n.rep*k)
+  rej <- which(r >= quantile(r, probs = 1-cdf))
+  # rej = sort(r, decreasing = T, index.return = T)$ix[1:R]
   return(rej) 
 }
 ##############################################################################
