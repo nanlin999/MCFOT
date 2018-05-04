@@ -1,11 +1,3 @@
-### Introduction
-
-# This demo reproduces the gene dosage data experiment in the paper:
-
-# Ang Li and Rina Foygel Barber, "Accumulation tests for FDR control in ordered hypothesis testing" (2015). Available from http://arxiv.org/abs/1505.07352
-
-# The demo was run using R version 3.2.0, using the GEOquery package version 2.34.0 to obtain the data.
-
 ### Setup
 # In this section we define and describe some functions that will be used in this demo. 
 
