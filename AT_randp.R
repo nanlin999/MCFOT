@@ -1,15 +1,4 @@
 ##############################################################################
-## These functions implement 
-##   the Accumulation Test methods from the paper:
-## Ang Li & Rina Foygel Barber,
-##   "Accumulation tests for FDR control
-##      in ordered hypothesis testing"
-## Available from http://arxiv.org/abs/1505.07352
-## (Several methods from other papers also implemented,
-##        as noted below - see citations in paper)
-##############################################################################
-
-##############################################################################
 ## HingeExp method,
 ##    i.e. an accumulation test with the HingeExp function:
 ##       h(p) = C * log(1/(C*(1-p))) * (p>1-1/C)
